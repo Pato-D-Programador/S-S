@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - "9000:9000"  # Exponer el puerto 9000 para acceder al front-end de Portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  # Necesario para gestionar Docker
+      - portainer_data:/data  # Almacena los datos de Portainer
+
+volumes:
+  portainer_data:
+
